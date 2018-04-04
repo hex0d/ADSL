@@ -37,9 +37,6 @@ void madhava (long double realpi) { // método Madhava of Sangamagrama
   std::cout << i2 << '\n'; // numero de casas de precisão que acertou;
 }
 
-void func(/* arguments */) {
-  /* code */
-}
 
 
 int main(int argc, char const *argv[]) {
