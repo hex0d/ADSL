@@ -3,6 +3,17 @@
 #include <math.h>
 #include <iostream>
 
+// Fatorial
+unsigned long long fat(int n){
+	unsigned long long fat = 1;
+	while (n)
+	{
+		fat *= n;
+		n--;
+	}
+
+	return fat;
+}
 
 /***************************************************************************************************************
 ****************************************************************************************************************
@@ -21,16 +32,7 @@ double limiteExponencial(int n){
 //-------------------------------------------------------------------------------
 
 //Pelo série de taylor para x = 1
-unsigned long long fat(int n){
-	unsigned long long fat = 1;
-	while (n)
-	{
-		fat *= n;
-		n--;
-	}
 
-	return fat;
-}
 
 double serieTaylor(int termos){
 	double e = 0;
@@ -150,7 +152,7 @@ double serie_infinita_tp7(int termos){ //porblema no fatorial que é 2x mais rap
 	for (int i = 1; i <= termos; i++){
 		unsigned long long f = fat(i-1);
 		if (f > 0){
-			e += ((i)/2.0*f);
+			e += ((i)/(2.0*f));
 		}
 		else break;
 	}
@@ -165,9 +167,9 @@ double serie_infinita_tp7(int termos){ //porblema no fatorial que é 2x mais rap
 double serie_infinita_tp8(int termos){ //porblema no fatorial que é 2x mais rapido pra crasha.
 	double e = 0;
 	for (int i = 1; i <= termos; i++){
-		unsigned long long f = fat(i-1);
+		unsigned long long f = fat(i);
 		if (f > 0){
-			e += ((i)/2.0*f);
+			e += ((pow(i,2)/(2.0*f)));
 		}
 		else break;
 	}
@@ -178,6 +180,39 @@ double serie_infinita_tp8(int termos){ //porblema no fatorial que é 2x mais rap
 
 //-------------------------------------------------------------------------------
 
+
+double serie_infinita_tp9(int termos){ //porblema no fatorial que é 2x mais rapido pra crasha.
+	double e = 0;
+	for (int i = 1; i <= termos; i++){
+		unsigned long long f = fat(i);
+		if (f > 0){
+			e += ((pow(i,3)/(5.0*f)));
+		}
+		else break;
+	}
+	return e;
+}
+
+
+
+//-------------------------------------------------------------------------------
+
+
+double serie_infinita_tp10(int termos){ //porblema no fatorial que é 2x mais rapido pra crasha.
+	double e = 0;
+	for (int i = 1; i <= termos; i++){
+		unsigned long long f = fat(i);
+		if (f > 0){
+			e += ((pow(i,4)/(15.0*f)));
+		}
+		else break;
+	}
+	return e;
+}
+
+
+
+//-------------------------------------------------------------------------------
 
 /***************************************************************************************************************
 ****************************************************************************************************************
@@ -233,14 +268,22 @@ double pi2Por6(int termos){
 
 
 int main(){
-//	printf("Valor de e pelo limite exponencial (precisao limitada devido ao calculo do fatorial): %.20f\n", limiteExponencial(100));
-//	printf("Valor de e pela serie de Taylor:        %.20f\n", serieTaylor(100));
-//	printf("Valor de e por serie tp1:   	          %.20f\n", serie_infinita_tp1(999999)); //https://bit.ly/2EhPtbF seguindo desde o primeiro
-	printf("Valor de e por serie tp2:   	          %.20f\n", serie_infinita_tp7(999999));
+	printf("Valor de e pelo limite exponencial (precisao limitada devido ao calculo do fatorial): %.20f\n", limiteExponencial(100));
+	printf("Valor de e pela serie de Taylor:			%.20f\n", serieTaylor(100));
+	printf("Valor de e por serie tp1:				%.20f\n", serie_infinita_tp1(999999)); //https://bit.ly/2EhPtbF seguindo desde o primeiro
+	printf("Valor de e por serie tp2:				%.20f\n", serie_infinita_tp2(999999));
+	printf("Valor de e por serie tp3:				%.20f\n", serie_infinita_tp3(999999));
+	printf("Valor de e por serie tp4:				%.20f\n", serie_infinita_tp4(999999));
+	printf("Valor de e por serie tp5:				%.20f\n", serie_infinita_tp5(999999));
+	printf("Valor de e por serie tp6:				%.20f\n", serie_infinita_tp6(999999));
+	printf("Valor de e por serie tp7:				%.20f\n", serie_infinita_tp7(999999));
+	printf("Valor de e por serie tp8:				%.20f\n", serie_infinita_tp8(999999));
+	printf("Valor de e por serie tp9:				%.20f\n", serie_infinita_tp9(999999));
+	printf("Valor de e por serie tp10:				%.20f\n", serie_infinita_tp10(999999));
+	printf("Valor de pi por serie para pi/4:			%.20f\n", piSobre4(100));
+	printf("Valor de pi por serie com ln2:				%.20f\n", piComLN(999999));
+	printf("Valor de pi por serie com quadrado:			%.20f\n", pi2Por6(999999));
 
-//	printf("Valor de pi por serie para pi/4:        %.20f\n", piSobre4(100));
-//	printf("Valor de pi por serie com ln2:          %.20f\n", piComLN(999999));
-//	printf("Valor de pi por serie com quadrado:   	%.20f\n", pi2Por6(999999));
 
 	return 0;
 }
