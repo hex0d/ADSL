@@ -260,23 +260,12 @@ double pi_1933(){
 		return final_num;
 }
 //-------------------------------------------------------------------------------
-double aux_sum(){
-	double term,term_aux;
-	term_aux = term;
-	term = sqrt(2+ aux_sum())
 
+double viete_pi(int n) {
+  double q=0.0, pi=2.0;
+  for (int i=0; i<n; ++i) pi *= 2.0/(q=sqrt(2.0+q));
+  return pi;
 }
-double viete_pi(){
-	double pi = 0.0
-	double term,term_aux;
-
-	while (term != term_aux) {
-
-	}
-
-
-}
-
 
 //-------------------------------------------------------------------------------
 
