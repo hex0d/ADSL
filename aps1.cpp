@@ -273,6 +273,20 @@ double piSobre4(int termos){
 
 //-------------------------------------------------------------------------------
 
+double newpi( int termos ){
+
+		double pi = 4.0;
+		for( int i = 0; i < termos; ++i )
+		{
+				pi += (i % 2 == 0 ? -4.0 : 4.0) / ( 3.0 + i * 2 );
+		}
+		return( pi );
+
+
+}
+
+//-------------------------------------------------------------------------------
+
 // Série para pi com ln2
 double piComLN(int termos){
 	double soma = 1;
@@ -309,7 +323,7 @@ double pi2Por6(int termos){
 
 int main(){
 	printf("Valor de e pelo limite exponencial (precisao limitada devido ao calculo do fatorial): %.20f\n", limiteExponencial(100));
-	printf("Valor de e pela serie de Taylor:					%.20f\n", serieTaylor(100));
+	printf("Valor de e pela serie de Taylor:					%.20f\n", serieTaylor(100000000));
 	printf("Valor de e por serie tp1:						%.20f\n", serie_infinita_tp1(999999)); //https://bit.ly/2EhPtbF seguindo desde o primeiro
 	printf("Valor de e por serie tp2:						%.20f\n", serie_infinita_tp2(999999));
 	printf("Valor de e por serie tp3:						%.20f\n", serie_infinita_tp3(999999));
@@ -320,7 +334,11 @@ int main(){
 	printf("Valor de e por serie tp8:						%.20f\n", serie_infinita_tp8(999999));
 	printf("Valor de e por serie tp9:						%.20f\n", serie_infinita_tp9(999999));
 	printf("Valor de e por serie tp10:						%.20f\n", serie_infinita_tp10(999999));
-	printf("Valor de pi por serie para pi/4:					%.20f\n", piSobre4(100));
+
+
+
+	printf("Valor de pi por serie para newpi:					%.20f\n", newpi(100000000));
+	printf("Valor de pi por serie para pi/4:					%.20f\n", piSobre4(100000000));
 	printf("Valor de pi por serie com ln2:						%.20f\n", piComLN(999999));
 	printf("Valor de pi por serie com quadrado:					%.20f\n", pi2Por6(999999));
 	printf("Valor de pi por serie para ex 19.15 300000 iteracoes:			%.20f\n", pi_1915());

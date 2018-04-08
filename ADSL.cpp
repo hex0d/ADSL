@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <limits>
 #include <cmath>
 #include "windows.h"
@@ -43,5 +43,52 @@ int main(int argc, char const *argv[]) {
   long double realpi = 3.141592653589793238462643383279502884197169399375105820974944592307816406286; // usar numero real de pi para definir boa apriximação
 
   madhava(realpi);
+
+}*/
+
+#include <iostream>
+#include <limits>
+#include <cmath>
+#include "windows.h"
+#include  <iomanip>
+
+
+int main()
+{
+    int nterms = 1000000 ; // accept from user
+
+
+    double sum = 0.0 ;
+    int numerator = -1 ;
+    const int upper_bound = nterms * 2 ;
+
+    for( int n = 1 ; n < upper_bound ; n += 2 ) // for each term upto nterms
+    {
+        numerator *= -1 ; // alernating +1, -1, +1, -1 ...
+        const double term = numerator / double(n) ; // +1/1.0, -1/3.0, +1/5.0 ...
+        sum += term ; // +1/1.0 + -1/3.0, + 1/5.0 + -1/7.0 ...
+    }
+
+    const double pi = 4 * sum ; // 4 * ( 1/1.0 + -1/3.0, + 1/5.0 + -1/7.0 ... )
+
+    std::cout << "pi upto " << nterms << " terms: " <<std::setprecision(30) << pi << '\n' ;
+
+}
+
+double newpi( int termos ){
+	double soma = 0.0 ;
+	int inv = -1 ;
+	const int max_iter = termos * 2 ;
+
+	for( int n = 1 ; n < max_iter ; n += 2 ) // for each term upto nterms
+	{
+			inv *= -1 ; // alernating +1, -1, +1, -1 ...
+			const double term = inv / double(n) ; // +1/1.0, -1/3.0, +1/5.0 ...
+			soma += term ; // +1/1.0 + -1/3.0, + 1/5.0 + -1/7.0 ...
+	}
+
+	const double pi = 4 * sum ;
+
+	return pi;
 
 }
