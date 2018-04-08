@@ -52,7 +52,7 @@ int main(int argc, char const *argv[]) {
 #include "windows.h"
 #include  <iomanip>
 
-
+/*
 int main()
 {
     int nterms = 1000000 ; // accept from user
@@ -91,4 +91,24 @@ double newpi( int termos ){
 
 	return pi;
 
+}*/
+double viete_pi(int termos){
+	double pi = 1,f;
+	for(int i = termos; i > 1; i--) {
+      f = 2.0;
+      for(int j = 1; j < i; j++){
+         f = 2.0 + sqrt(f);
+      }
+      f = sqrt(f);
+      pi = pi * f / 2.0;
+   }
+   pi *= sqrt(2.0) / 2.0;
+   pi = 2+0 / pi;
+	 return pi;
+}
+
+
+int main(int argc, char const *argv[]) {
+	std::cout << std::setprecision(30) << viete_pi(100000) << '\n';
+	return 0;
 }

@@ -260,7 +260,25 @@ double pi_1933(){
 		return final_num;
 }
 //-------------------------------------------------------------------------------
+double aux_sum(){
+	double term,term_aux;
+	term_aux = term;
+	term = sqrt(2+ aux_sum())
 
+}
+double viete_pi(){
+	double pi = 0.0
+	double term,term_aux;
+
+	while (term != term_aux) {
+
+	}
+
+
+}
+
+
+//-------------------------------------------------------------------------------
 
 // Série para pi / 4
 double piSobre4(int termos){
