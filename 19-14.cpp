@@ -2,7 +2,7 @@
 #include <math.h>
 #include <iostream>
 #include "time.h"
-#include  <iomanip>
+#include <iomanip>
 
 double f1914(){
   double e;

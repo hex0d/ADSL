@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 #include <limits>
 #include <cmath>
 #include "windows.h"
@@ -44,13 +44,7 @@ int main(int argc, char const *argv[]) {
 
   madhava(realpi);
 
-}*/
-
-#include <iostream>
-#include <limits>
-#include <cmath>
-#include "windows.h"
-#include  <iomanip>
+}
 
 /*
 int main()
@@ -92,7 +86,7 @@ double newpi( int termos ){
 	return pi;
 
 }*/
-double viete_pi(int termos){
+/*double viete_pi(int termos){
 	double pi = 1,f;
 	for(int i = termos; i > 1; i--) {
       f = 2.0;
@@ -111,4 +105,4 @@ double viete_pi(int termos){
 int main(int argc, char const *argv[]) {
 	std::cout << std::setprecision(30) << viete_pi(100000) << '\n';
 	return 0;
-}
+}*/

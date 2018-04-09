@@ -1,7 +1,8 @@
-
 #include <stdio.h>
 #include <math.h>
 #include <iostream>
+#include "time.h"
+#include <iomanip>
 
 // Fatorial
 unsigned long long fat(int n){
@@ -24,6 +25,8 @@ unsigned long long fat(int n){
 
 
 // Pelo limite exponencial
+
+
 double limiteExponencial(int n){
 	double e = pow(1 + 1.0/n, n);
 	return e;
@@ -40,7 +43,8 @@ double serieTaylor(int termos){
 	{
 		unsigned long long f = fat(i);
 		if (f > 0)
-			e += 1.0/f;
+			{e += 1.0/f;
+			std::cout << "i" << '\n';}
 		else break;
 	}
 	return e;
@@ -329,29 +333,41 @@ double pi2Por6(int termos){
 
 
 int main(){
-	printf("Valor de e pelo limite exponencial (precisao limitada devido ao calculo do fatorial): %.20f\n", limiteExponencial(100));
-	printf("Valor de e pela serie de Taylor:					%.20f\n", serieTaylor(100000000));
-	printf("Valor de e por serie tp1:						%.20f\n", serie_infinita_tp1(999999)); //https://bit.ly/2EhPtbF seguindo desde o primeiro
-	printf("Valor de e por serie tp2:						%.20f\n", serie_infinita_tp2(999999));
-	printf("Valor de e por serie tp3:						%.20f\n", serie_infinita_tp3(999999));
-	printf("Valor de e por serie tp4:						%.20f\n", serie_infinita_tp4(999999));
-	printf("Valor de e por serie tp5:						%.20f\n", serie_infinita_tp5(999999));
-	printf("Valor de e por serie tp6:						%.20f\n", serie_infinita_tp6(999999));
-	printf("Valor de e por serie tp7:						%.20f\n", serie_infinita_tp7(999999));
-	printf("Valor de e por serie tp8:						%.20f\n", serie_infinita_tp8(999999));
-	printf("Valor de e por serie tp9:						%.20f\n", serie_infinita_tp9(999999));
-	printf("Valor de e por serie tp10:						%.20f\n", serie_infinita_tp10(999999));
+	//3.141592653589793238462643383279502884197169399375105820974944592307816406286
+	clock_t tStart = clock();
+	long double reale = 2.71828182845904523536028747135266249775724709369995; // usar numero real de pi para definir boa apriximação
+	int i2=0;
+	double e = serie_infinita_tp2(1000000000);
+	long double diff = reale - (long double)e;
+	for (size_t i = 0; (int)diff * 10 == 0; i++) {
+    diff = diff*10;
+    i2=i;
+  }
+
+	printf("Valor de e : %.30f\n", e);
+	std::cout << "Com "<< (i2) << " casas apos a virgula de precisao" << '\n';
+	//printf("Valor de e pela serie de Taylor:					%.20f\n", serieTaylor(100000000));
+	//printf("Valor de e por serie tp1:						%.20f\n", serie_infinita_tp1(999999)); //https://bit.ly/2EhPtbF seguindo desde o primeiro
+	//printf("Valor de e por serie tp2:						%.20f\n", serie_infinita_tp2(999999));
+	//printf("Valor de e por serie tp3:						%.20f\n", serie_infinita_tp3(999999));
+	//printf("Valor de e por serie tp4:						%.20f\n", serie_infinita_tp4(999999));
+	//printf("Valor de e por serie tp5:						%.20f\n", serie_infinita_tp5(999999));
+	//printf("Valor de e por serie tp6:						%.20f\n", serie_infinita_tp6(999999));
+	//printf("Valor de e por serie tp7:						%.20f\n", serie_infinita_tp7(999999));
+	//printf("Valor de e por serie tp8:						%.20f\n", serie_infinita_tp8(999999));
+	//printf("Valor de e por serie tp9:						%.20f\n", serie_infinita_tp9(999999));
+	//printf("Valor de e por serie tp10:						%.20f\n", serie_infinita_tp10(999999));
 
 
 
-	printf("Valor de pi por serie para newpi:					%.20f\n", newpi(100000000));
-	printf("Valor de pi por serie para pi/4:					%.20f\n", piSobre4(100000000));
-	printf("Valor de pi por serie com ln2:						%.20f\n", piComLN(999999));
-	printf("Valor de pi por serie com quadrado:					%.20f\n", pi2Por6(999999));
-	printf("Valor de pi por serie para ex 19.15 300000 iteracoes:			%.20f\n", pi_1915());
-	printf("Valor de pi por serie para ex 19.33 300000 iteracoes:			%.20f\n", pi_1933());
+	//printf("Valor de pi por serie para newpi:					%.20f\n", newpi(100000000));
+	//printf("Valor de pi por serie para pi/4:					%.20f\n", piSobre4(100000000));
+	//printf("Valor de pi por serie com ln2:						%.20f\n", piComLN(999999));
+	//printf("Valor de pi por serie com quadrado:					%.20f\n", pi2Por6(999999));
+	//printf("Valor de pi por serie para ex 19.15 300000 iteracoes:			%.20f\n", pi_1915());
+	//printf("Valor de pi por serie para ex 19.33 300000 iteracoes:			%.20f\n", pi_1933());
 
 
-
+	printf("Time taken: %.5fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 	return 0;
 }
