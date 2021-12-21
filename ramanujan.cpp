@@ -17,7 +17,7 @@
 
  	return fat;
  }
-
+//editar
 double ramanujan_pi(int termos){
  	double pi = 2.0*sqrt(2)/9801.0;
   double aux = 0.0 ;
